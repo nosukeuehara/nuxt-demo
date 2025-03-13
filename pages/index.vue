@@ -10,7 +10,7 @@ const logout = async () => {
 };
 
 onBeforeMount(async () => {
-  await navigateTo("/home");
+  await navigateTo("/loginForm");
 });
 
 </script>
@@ -24,7 +24,7 @@ onBeforeMount(async () => {
     </div>
     <div v-else>
       <button @click="login">
-        Keycloak でログイン
+        Keycloak でログイン root
       </button>
     </div>
   </client-only>

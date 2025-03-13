@@ -12,7 +12,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 
   try {
     await keycloak.init({
-      onLoad: "login-required",
+      onLoad: "check-sso",
       pkceMethod: "S256",
       responseMode: "query",
       flow: "standard",
@@ -24,7 +24,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     }
     );
   } catch (error) {
-    console.log("Keycloak initialization failed:", error);
+    console.error("Keycloak initialization failed:", error);
   }
 
   nuxtApp.provide("keycloak", keycloak);
