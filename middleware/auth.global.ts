@@ -5,7 +5,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   if (to.path === "/") return;
 
   if (!$keycloak.authenticated) {
-    console.log('未認証');
+    console.error('未認証');
     return navigateTo("/");
   }
 });
