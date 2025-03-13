@@ -23,12 +23,6 @@ export default defineNuxtPlugin(async (nuxtApp) => {
       redirectUri: "http://localhost:3000"
     }
     );
-
-    if (authenticated) {
-      console.log("Authenticated");
-    } else {
-      console.log("Authentication failed");
-    }
   } catch (error) {
     console.log("Keycloak initialization failed:", error);
   }
