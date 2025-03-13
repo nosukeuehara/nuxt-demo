@@ -11,7 +11,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 
 
   try {
-    const authenticated = await keycloak.init({
+    await keycloak.init({
       onLoad: "login-required",
       pkceMethod: "S256",
       responseMode: "query",
