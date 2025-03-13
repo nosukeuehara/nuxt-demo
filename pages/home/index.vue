@@ -1,6 +1,9 @@
 <template>
   <ClientOnly>
     hello
+    <div>
+      アクセストークン: {{ $keycloak.token }}
+    </div>
     <div v-if="$keycloak.authenticated">
       <button @click="logout">
         ログアウト

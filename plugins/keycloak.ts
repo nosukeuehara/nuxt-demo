@@ -11,7 +11,18 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 
 
   try {
-    const authenticated = await keycloak.init({ onLoad: "check-sso" });
+    const authenticated = await keycloak.init({
+      onLoad: "login-required",
+      pkceMethod: "S256",
+      responseMode: "query",
+      flow: "standard",
+      checkLoginIframe: false,
+      enableLogging: true,
+      useNonce: true,
+      scope: "openid email profile",
+      redirectUri: "http://localhost:3000"
+    }
+    );
 
     if (authenticated) {
       console.log("Authenticated");

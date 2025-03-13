@@ -5,7 +5,6 @@ const { $keycloak } = useNuxtApp();
 
 const login = async () => {
   await $keycloak.login()
-  await navigateTo('/home')
 };
 
 const logout = async () => {
