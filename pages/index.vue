@@ -1,6 +1,4 @@
 <script setup>
-import { useNuxtApp } from '#app';
-
 const { $keycloak } = useNuxtApp();
 
 const login = async () => {
