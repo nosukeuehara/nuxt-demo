@@ -1,15 +1,34 @@
 <script setup>
+import { useNuxtApp } from '#app';
+
 const { $keycloak } = useNuxtApp();
 
-const login = () => {
-  $keycloak.login();
+const login = async () => {
+  await $keycloak.login()
+  await navigateTo('/home')
 };
+
+const logout = async () => {
+  await $keycloak.logout();
+};
+
+onBeforeMount(async () => {
+  await navigateTo("/home");
+});
+
 </script>
 
 <template>
-  <div class="flex justify-center items-center min-h-screen">
-    <button @click="login" class="bg-blue-500 text-white px-4 py-2 rounded">
-      Keycloak でログイン
-    </button>
-  </div>
+  <client-only>
+    <div v-if="$keycloak.authenticated">
+      <button @click="logout">
+        ログアウト
+      </button>
+    </div>
+    <div v-else>
+      <button @click="login">
+        Keycloak でログイン
+      </button>
+    </div>
+  </client-only>
 </template>

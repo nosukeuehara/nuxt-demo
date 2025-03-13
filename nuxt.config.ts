@@ -9,4 +9,7 @@ export default defineNuxtConfig({
       KEYCLOAK_CLIENT_ID: "myclient",
     },
   },
+  plugins: [
+    { src: '@/plugins/keycloak.ts', mode: 'client' },
+  ],
 })

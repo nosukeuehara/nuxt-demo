@@ -1,11 +1,11 @@
-export default defineNuxtRouteMiddleware((to) => {
-  const { $keycloak } = useNuxtApp();
-
+export default defineNuxtRouteMiddleware(async (to, from) => {
+  const { $keycloak } = await useNuxtApp();
   if (!$keycloak) return;
 
-  if (to.path === "/login") return;
+  if (to.path === "/") return;
 
   if (!$keycloak.authenticated) {
-    return navigateTo("/login");
+    console.log('未認証');
+    return navigateTo("/");
   }
 });
